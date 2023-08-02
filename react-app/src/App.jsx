@@ -1,8 +1,18 @@
-import React from "react";
-import { Pets } from "./components/pets/Pets";
+import React from 'react';
+import CardList from './components/CardList';
 
-const App = () => {
-  return <Pets />;
-};
+function App() {
+  return (
+    <div className="App">
+      <h1>Card List</h1>
+      <CardList />
+    </div>
+  );
+}
 
 export default App;
+
+
+
+
+
