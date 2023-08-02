@@ -1,8 +1,21 @@
-DROP TABLE IF EXISTS dogs;
-
-CREATE TABLE dogs (
-    dog_id INT NOT NULL,
-    name VARCHAR(250) NOT NULL,
-    age INT NOT NULL
+CREATE TABLE IF NOT EXISTS trade (
+    trade_id INT PRIMARY KEY,
+    trade_type VARCHAR(10),
+    trade_currency VARCHAR(3),
+    quantity INT,
+    trade_settlement_date DATE,
+    trade_status VARCHAR(10),
+    trade_date DATE,
+    unit_price DECIMAL(10,2),
+    coupon_percent DECIMAL(10,2),
+    bond_currency VARCHAR(3),
+    cusip VARCHAR(20),
+    face_value_mn INT,
+    isin VARCHAR(20),
+    issuer_name VARCHAR(100),
+    bond_maturity_date DATE,
+    status VARCHAR(10),
+    type VARCHAR(10),
+    book_name VARCHAR(50),
+    bond_holder VARCHAR(50)
 );
-
