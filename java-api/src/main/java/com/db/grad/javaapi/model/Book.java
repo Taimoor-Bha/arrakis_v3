@@ -9,18 +9,14 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "books_id")
+    @JoinColumn(name = "book_id")
     private Long bookId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
 
     public void setTradesList(Set<Trade> tradesList) {
         this.tradesList = tradesList;
     }
 
-    @OneToMany(mappedBy = "book_id", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private Set<Trade> tradesList;
 
     private String name;
@@ -41,14 +37,6 @@ public class Book {
 
     public void setBookId(Long bookId) {
         this.bookId = bookId;
-    }
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
     }
 
     public String getName() {

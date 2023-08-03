@@ -1,19 +1,19 @@
 CREATE TABLE IF NOT EXISTS users (
-    users_id INT PRIMARY KEY,
+    user_id INT PRIMARY KEY,
     name VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS book (
-    books_id INT PRIMARY KEY,
-    name VARCHAR(50),
+    book_id INT PRIMARY KEY,
+    name VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS book_users (
+CREATE TABLE IF NOT EXISTS book_user (
     book_users_id INT PRIMARY KEY,
     user_id INT,
     book_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(users_id),
-    FOREIGN KEY (book_id) REFERENCES book(books_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
 CREATE TABLE IF NOT EXISTS trade (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS trade (
     status VARCHAR(10),
     type VARCHAR(10),
     bond_holder_id INT,
-    FOREIGN KEY (book_id) REFERENCES book(books_id),
-    FOREIGN KEY (issuer_id) REFERENCES users(users_id),
-    FOREIGN KEY (bond_holder_id) REFERENCES users(users_id)
+    FOREIGN KEY (book_id) REFERENCES book(book_id),
+    FOREIGN KEY (issuer_id) REFERENCES users(user_id),
+    FOREIGN KEY (bond_holder_id) REFERENCES users(user_id)
 );
