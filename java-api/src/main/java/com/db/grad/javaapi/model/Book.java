@@ -1,12 +1,8 @@
 package com.db.grad.javaapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -20,12 +16,27 @@ public class Book {
     @JoinColumn(name = "user_id")
     private Users user;
 
+    public void setTradesList(Set<Trade> tradesList) {
+        this.tradesList = tradesList;
+    }
+
+    @OneToMany(mappedBy = "book_id", fetch = FetchType.EAGER)
+    private Set<Trade> tradesList;
+
     private String name;
 
     public Book() {}
 
     public Long getBook_id() {
         return bookId;
+    }
+
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public Set<Trade> getTradesList() {
+        return tradesList;
     }
 
     public void setBookId(Long bookId) {

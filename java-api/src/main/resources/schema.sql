@@ -5,9 +5,15 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS book (
     books_id INT PRIMARY KEY,
-    user_id INT,
     name VARCHAR(50),
-    FOREIGN KEY (user_id) REFERENCES users(users_id)
+);
+
+CREATE TABLE IF NOT EXISTS book_users (
+    book_users_id INT PRIMARY KEY,
+    user_id INT,
+    book_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(users_id),
+    FOREIGN KEY (book_id) REFERENCES book(books_id)
 );
 
 CREATE TABLE IF NOT EXISTS trade (

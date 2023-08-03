@@ -18,4 +18,8 @@ public class TradeService {
         this.tradeRepository = tradeRepository;
     }
 
+    public List<Trade> getAllTrades() {
+        return tradeRepository.findAll();
+    }
+
 }
