@@ -18,7 +18,11 @@ public class Book {
 
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private Set<Trade> tradesList;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "book_user",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<Users> usersList;
     private String name;
 
     public Book() {}
@@ -33,6 +37,9 @@ public class Book {
 
     public Set<Trade> getTradesList() {
         return tradesList;
+    }
+    public Set<Users> getUsersList() {
+        return usersList;
     }
 
     public void setBookId(Long bookId) {

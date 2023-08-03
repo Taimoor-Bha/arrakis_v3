@@ -4,13 +4,14 @@ import com.db.grad.javaapi.model.Book;
 import com.db.grad.javaapi.model.Trade;
 import com.db.grad.javaapi.model.Users;
 import com.db.grad.javaapi.repository.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class BookService {
-
+    @Autowired
     private BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
@@ -40,13 +41,8 @@ public class BookService {
 
     // Wait for Rares
     public Set<Trade> getTrades(long id) {
-        Book book = bookRepository.findById(id).get();
+        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getTradesList();
 
-        if (book == null) {
-            return null;
-        } else {
-            return book.getTradesList();
-        }
     }
 
     // Still needs to be done
@@ -69,9 +65,9 @@ public class BookService {
         return filteredBooks;
     }
 
-    // Wait for Rares
-    public List<Users> getUsers() {
-        return null;
+    public Set<Users> getUsersList(long id) {
+        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getUsersList();
     }
+
 
 }

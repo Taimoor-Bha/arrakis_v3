@@ -1,6 +1,7 @@
 package com.db.grad.javaapi.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -10,6 +11,9 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "user_id")
     private Long userId;
+
+    @ManyToMany(mappedBy = "usersList", fetch = FetchType.LAZY)
+    private Set<Book> booksList;
 
     private String name;
 
@@ -38,4 +42,6 @@ public class Users {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
