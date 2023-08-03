@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "books_id")
     private Long bookId;
 
     @ManyToOne
