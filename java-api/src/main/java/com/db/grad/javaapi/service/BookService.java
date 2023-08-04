@@ -1,36 +1,22 @@
 package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.model.Book;
-import com.db.grad.javaapi.repository.BookRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-@Service
-public class BookService {
+public interface BookService {
 
-    private BookRepository bookRepository;
+    List<Book> getAllActiveBooks();
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    List<Book> findBooksDueForMaturityInLastAndNextFiveDays();
 
-    public List<Book> getSecurities() {
-        return bookRepository.findAll();
-    }
+    List<Book> findBooksDueForMaturityInLastAndNextFiveDaysByDate(String givenDate);
 
-    public Optional<Book> getBookById(long id) {
-        return bookRepository.findById(id);
-    }
+    List<Book> findBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(String givenDate);
 
-    public Book modifyBook(long id) {
-        Book book = new Book();
-        book.setBookId(id);
-        return bookRepository.save(book);
-    }
+    Optional<Book> findByIsin(String isin);
 
-
-
-
+    Map<String, String> getBookIsinIssuerMap();
 }

@@ -1,50 +1,49 @@
 package com.db.grad.javaapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "book")
+@Getter
+@Setter
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name = "books_id")
-    private Long bookId;
+    private String isin;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users user;
+    @Column(name = "book_currency")
+    private String bookCurrency;
 
-    private String name;
+    private String cusip;
 
-    public Book() {}
+    @Column(name = "face_value")
+    private int faceValue;
 
-    public Long getBook_id() {
-        return bookId;
-    }
+    @Column(name = "issuer_name")
+    private String issuerName;
 
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
+    @Column(name = "book_maturity_date")
+    private Date bookMaturityDate;
 
-    public Users getUser() {
-        return user;
-    }
+    private String status;
 
-    public void setUser(Users user) {
-        this.user = user;
-    }
+    private String type;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "client_id")
+    private int clientId;
 
-    public void setName(String BookName) {
-        this.name = BookName;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @JoinColumn(name = "client_id", referencedColumnName = "client_id", insertable = false, updatable = false)
+    private Client client;
+
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Trade> trades;
 }
