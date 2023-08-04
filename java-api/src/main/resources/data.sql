@@ -1,11 +1,11 @@
 
-INSERT INTO client (client_id, client_name, client_surname, client_email, client_department, client_role, client_password_hash)
+INSERT INTO client (client_id, client_name, client_surname, client_email, client_password_hash)
 VALUES
-       (1000, 'Neal', 'Patel', 'neal@db.com', 'operations', 'senior', NULL),
-       (1001, 'Taimoor', 'Bhatti', 'taimoor@db.com', 'operations', 'senior', NULL),
-       (1002, 'Rares', 'Bran', 'rares@db.com', 'operations', 'senior', NULL),
-       (1003, 'Test', '1', 't1@db.com', 'operations', 'senior', NULL),
-       (1004, 'Test', '2', 't2@db.com', 'operations', 'senior', NULL);
+       (1000, 'Neal', 'Patel', 'neal@db.com', NULL),
+       (1001, 'Taimoor', 'Bhatti', 'taimoor@db.com', NULL),
+       (1002, 'Rares', 'Bran', 'rares@db.com',  NULL),
+       (1003, 'Test', '1', 't1@db.com',  NULL),
+       (1004, 'Test', '2', 't2@db.com', NULL);
 
 INSERT INTO book (isin, book_currency, cusip, face_value, issuer_name, book_maturity_date, status, type, client_id)
 VALUES

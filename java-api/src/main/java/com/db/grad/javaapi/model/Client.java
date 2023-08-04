@@ -27,12 +27,6 @@ public class Client {
     @Column(name = "client_email")
     private String clientEmail;
 
-    @Column(name = "client_department")
-    private String clientDepartment;
-
-    @Column(name = "client_role")
-    private String clientRole;
-
     @Column(name = "client_password_hash")
     private String clientPasswordHash;
 

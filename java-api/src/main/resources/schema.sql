@@ -1,17 +1,13 @@
-
-DROP TABLE IF EXISTS client;
 DROP TABLE IF EXISTS book;
 DROP TABLE IF EXISTS trade;
-
+DROP TABLE IF EXISTS client;
 
 CREATE TABLE IF NOT EXISTS client (
     client_id INT PRIMARY KEY,
     client_name VARCHAR(50),
     client_surname VARCHAR(50),
     client_email VARCHAR(150),
-    client_department VARCHAR(50),
-    client_role VARCHAR(50),
-    client_password_hash VARCHAR(100) -- Adjust the length as per your hashing algorithm
+    client_password_hash VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS book (

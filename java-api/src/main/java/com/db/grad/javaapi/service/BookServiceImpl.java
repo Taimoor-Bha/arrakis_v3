@@ -39,6 +39,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findByBookMaturityDateBetween(lastFiveDays, nextFiveDays);
     }
 
+
     @Override
     public List<Book> findBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(String givenDate) {
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,7 +84,7 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public List<Book> findBondsDueForMaturityInLastAndNextFiveDaysByDate(String givenDate) {
+    public List<Book> findBooksDueForMaturityInLastAndNextFiveDaysByDate(String givenDate) {
         SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date utilDate = null;
