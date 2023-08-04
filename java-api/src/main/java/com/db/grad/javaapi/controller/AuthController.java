@@ -1,8 +1,9 @@
 package com.db.grad.javaapi.controller;
 
-import com.db.grad.javaapi.model.Employee;
-import com.db.grad.javaapi.model.LoginUser;
-import com.db.grad.javaapi.service.EmployeeServiceImpl;
+import com.db.grad.javaapi.model.Client;
+import com.db.grad.javaapi.model.LoginClient;
+import com.db.grad.javaapi.service.ClientService;
+import com.db.grad.javaapi.service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthController {
 
-    private final EmployeeServiceImpl employeeServiceImpl;
+    private final ClientServiceImpl clientServiceImpl;
 
     @Autowired
-    public AuthController(EmployeeServiceImpl employeeRepository) {
-        this.employeeServiceImpl = employeeRepository;
+    public AuthController(ClientServiceImpl clientRepository) {
+        this.clientServiceImpl = clientRepository;
     }
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginUser user) {
-        Employee existingUser = employeeServiceImpl.findByEmployeeEmail(user.getEmail());
+    public ResponseEntity<String> login(@RequestBody LoginClient client) {
+        Client existingUser = clientServiceImpl.findByClientEmail(client.getEmail());
 
         if (existingUser != null) {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            if (passwordEncoder.matches(user.getPassword(), existingUser.getEmployeePasswordHash())) {
+            if (passwordEncoder.matches(client.getPassword(), existingUser.getClientPasswordHash())) {
                 return ResponseEntity.ok("Login successful");
             }
         }
