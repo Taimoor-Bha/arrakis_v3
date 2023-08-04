@@ -23,7 +23,7 @@ INSERT INTO book (name) VALUES ('trading_book_6');
 --(3, 2, 1),
 --(4, 2, 3),
 --(5, 3, 1);
-
+--
 --INSERT INTO book_user (user_id, book_id) VALUES
 --(1, 1),
 --(1, 2),

@@ -19,9 +19,6 @@ public class Users {
 
     // Default constructor, getters, and setters (or lombok annotations) are omitted for brevity
 
-    // Constructors
-    public Users() {}
-
     public Users(String name) {
         this.name = name;
     }

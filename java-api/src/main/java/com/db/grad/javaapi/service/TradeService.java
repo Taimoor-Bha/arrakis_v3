@@ -14,6 +14,7 @@ import java.util.Set;
 
 @Service
 public class TradeService {
+
     @Autowired
     private TradeRepository tradeRepository;
 

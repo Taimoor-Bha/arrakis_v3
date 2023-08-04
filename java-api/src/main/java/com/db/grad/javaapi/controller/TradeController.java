@@ -13,7 +13,10 @@ import java.util.Optional;
 @RequestMapping("/api/trade")
 @CrossOrigin(origins = "http://localhost:3000")
 public class TradeController {
+
+    @Autowired
     private TradeService tradeService;
+
     @Autowired
     public TradeController(TradeService tradeService) {
         this.tradeService = tradeService;

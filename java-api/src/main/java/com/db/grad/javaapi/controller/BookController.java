@@ -16,7 +16,10 @@ import java.util.Set;
 @RequestMapping("/api/book")
 @CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
+
+    @Autowired
     private BookService bookService;
+
     @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;

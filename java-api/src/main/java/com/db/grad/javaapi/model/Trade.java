@@ -66,10 +66,6 @@ public class Trade {
         this.bond_holder = bond_holder;
     }
 
-    public Trade() {
-
-    }
-
     public Long getTrade_id() {
         return tradeId;
     }

@@ -7,6 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "book")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "book_id")
@@ -18,17 +19,21 @@ public class Book {
 
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private Set<Trade> tradesList;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "book_user",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Users> usersList;
-    private String name;
 
-    public Book() {}
+    private String name;
 
     public Long getBook_id() {
         return bookId;
+    }
+
+    public void setUsersList(Set<Users> usersList) {
+        this.usersList = usersList;
     }
 
     public Long getBookId() {
