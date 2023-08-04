@@ -41,6 +41,14 @@ public class Trade {
     @JoinColumn(name = "bond_holder_id")
     private Users bond_holder;
 
+    public Long getTradeId() {
+        return tradeId;
+    }
+
+    public void setTradeId(Long tradeId) {
+        this.tradeId = tradeId;
+    }
+
     public Trade(Long tradeId, Book book, String trade_type, String trade_currency, int quantity,
                  Date trade_settlement_date, String trade_status, Date trade_date, BigDecimal unit_price,
                  BigDecimal coupon_percent, String bond_currency, String cusip, int face_value_mn,
@@ -64,6 +72,9 @@ public class Trade {
         this.status = status;
         this.type = type;
         this.bond_holder = bond_holder;
+    }
+
+    public Trade() {
     }
 
     public Long getTrade_id() {

@@ -12,15 +12,15 @@ public class Users {
     @JoinColumn(name = "user_id")
     private Long userId;
 
-    @ManyToMany(mappedBy = "usersList", fetch = FetchType.LAZY)
-    private Set<Book> booksList;
-
     private String name;
 
     // Default constructor, getters, and setters (or lombok annotations) are omitted for brevity
 
     public Users(String name) {
         this.name = name;
+    }
+
+    public Users() {
     }
 
     // Getters and Setters

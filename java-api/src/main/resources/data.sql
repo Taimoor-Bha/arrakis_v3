@@ -17,20 +17,6 @@ INSERT INTO book (name) VALUES ('trading_book_4');
 INSERT INTO book (name) VALUES ('trading_book_5');
 INSERT INTO book (name) VALUES ('trading_book_6');
 
---INSERT INTO book_user (book_users_id, user_id, book_id) VALUES
---(1, 1, 1),
---(2, 1, 2),
---(3, 2, 1),
---(4, 2, 3),
---(5, 3, 1);
---
---INSERT INTO book_user (user_id, book_id) VALUES
---(1, 1),
---(1, 2),
---(2, 1),
---(2, 3),
---(3, 1);
-
 INSERT INTO trade (book_id, trade_type, trade_currency, quantity, trade_settlement_date, trade_status, trade_date, unit_price, coupon_percent, bond_currency, cusip, face_value_mn, isin, issuer_id, bond_maturity_date, status, type, bond_holder_id)
 VALUES (1, 'buy', 'USD', 50, '2021-08-04', 'open', '2021-05-13', 90, 4.37, 'USD', '', 1000, 'XS1988387210', 1, '2021-08-05', 'active', 'CORP', 1);
 

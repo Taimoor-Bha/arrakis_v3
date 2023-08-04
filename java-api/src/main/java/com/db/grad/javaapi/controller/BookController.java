@@ -55,9 +55,15 @@ public class BookController {
     public Set<Trade> getTrades(long id) {
         return bookService.getTrades(id);
     }
-    @GetMapping("/users")
-    public Set<Users> getUsersList(long id) {
-        return bookService.getUsersList(id);
+
+    @GetMapping("/bondholders")
+    public Set<Users> getBondHoldersList(long id) {
+        return bookService.getBondHoldersList(id);
+    }
+
+    @GetMapping("/issuers")
+    public Set<Users> getIssuersList(long id) {
+        return bookService.getIssuersList(id);
     }
 
 }

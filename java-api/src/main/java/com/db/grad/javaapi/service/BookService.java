@@ -66,8 +66,12 @@ public class BookService {
         return filteredBooks;
     }
 
-    public Set<Users> getUsersList(long id) {
-        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getUsersList();
+    public Set<Users> getBondHoldersList(long id) {
+        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getBondHoldersList();
+    }
+
+    public Set<Users> getIssuersList(long id) {
+        return Objects.requireNonNull(bookRepository.findById(id).orElse(null)).getIssuersList();
     }
 
 

@@ -8,14 +8,6 @@ CREATE TABLE IF NOT EXISTS book (
     name VARCHAR(50)
 );
 
-CREATE TABLE IF NOT EXISTS book_user (
-    book_users_id INT PRIMARY KEY,
-    user_id INT,
-    book_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (book_id) REFERENCES book(book_id)
-);
-
 CREATE TABLE IF NOT EXISTS trade (
     trade_id INT PRIMARY KEY,
     book_id INT,
