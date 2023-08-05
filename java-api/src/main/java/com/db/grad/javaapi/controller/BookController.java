@@ -24,7 +24,7 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<Book> getAllBonds() {
         return bookServiceImpl.getAllActiveBooks();
     }
 
@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @GetMapping("/maturity")
-    public ResponseEntity<List<Book>> getBooksDueForMaturityInLastAndNextFiveDays() {
+    public ResponseEntity<List<Book>> getBondsDueForMaturityInLastAndNextFiveDays() {
         List<Book> books = bookServiceImpl.findBooksDueForMaturityInLastAndNextFiveDays();
         if (books.isEmpty()) {
             return ResponseEntity.noContent().build();
