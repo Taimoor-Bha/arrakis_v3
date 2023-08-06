@@ -83,4 +83,13 @@ public class BookServiceImpl implements BookService {
         List<Book> books = bookRepository.findAll();
         return books.stream().collect(Collectors.toMap(Book::getIsin, Book::getIssuerName));
     }
+
+    @Override
+    public List<String> getByISIN(int clientId) {
+        return bookRepository.findByISIN(clientId);
+    }
+    @Override
+    public List<Book> getByCUSIP(int clientId) {
+        return bookRepository.findByCUSIP(clientId);
+    }
 }

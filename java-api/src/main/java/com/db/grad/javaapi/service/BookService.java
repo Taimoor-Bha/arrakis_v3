@@ -16,4 +16,9 @@ public interface BookService {
     Optional<Book> findByIsin(String isin);
 
     Map<String, String> getBookIsinIssuerMap();
+
+    List<Book> getByISIN(int clientId);
+
+    List<Book> getByCUSIP(int clientId);
+
 }

@@ -28,7 +28,7 @@ public class ClientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> getAllEmployees() {
+    public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = clientServiceImpl.getAllClients();
         return ResponseEntity.ok(clients);
     }
@@ -47,4 +47,6 @@ public class ClientController {
         List<Book> books = clientServiceImpl.getBooksByClientId(id);
         return ResponseEntity.ok(books);
     }
+
+
 }

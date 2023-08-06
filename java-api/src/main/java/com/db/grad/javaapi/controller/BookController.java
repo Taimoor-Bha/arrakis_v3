@@ -40,7 +40,7 @@ public class BookController {
 
 
     @PostMapping("/maturity/date")
-    public ResponseEntity<List<Book>> getBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(@RequestParam String dateStr) {
+    public ResponseEntity<List<Book>> getBooksMaturingBetweenLastAndNextDays(@RequestParam String dateStr) {
         List<Book> books = bookServiceImpl.findBooksMaturingBetweenLastAndNextDays(dateStr);
         if (books.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -60,4 +60,13 @@ public class BookController {
         }
     }
 
+    @GetMapping("/isin/{client_id}")
+    public List<String> getBookByISIN(@PathVariable int clientId) {
+        return ;
+    }
+
+    @GetMapping("/cusip/{client_id}")
+    public List<String> getBookByCUSIP(@PathVariable int clientId) {
+        return;
+    }
 }

@@ -15,4 +15,6 @@ public interface ClientService {
     List<Book> getBooksByClientId(int clientId);
 
     Client findByClientEmail(String email);
+
+
 }

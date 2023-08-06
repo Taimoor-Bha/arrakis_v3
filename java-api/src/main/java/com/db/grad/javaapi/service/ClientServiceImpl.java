@@ -8,6 +8,7 @@ import com.db.grad.javaapi.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Id;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,4 +52,6 @@ public class ClientServiceImpl implements ClientService {
     public Client findByClientEmail(String email) {
         return clientRepository.findByClientEmail(email);
     }
+
+
 }
