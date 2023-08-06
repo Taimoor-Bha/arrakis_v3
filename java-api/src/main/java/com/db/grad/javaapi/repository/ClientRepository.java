@@ -14,9 +14,9 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     Client findByClientEmail(String ClientEmail);
 
-    @Query("SELECT b.isin FROM Book b WHERE b.client_id = :client_id")
-    List<Book> findByISIN(@Param("isin") int client_id);
+//    @Query("SELECT b.isin FROM Book b WHERE b.client_id = :client_id")
+//    List<String> findByISIN(@Param("client_id") int client_id);
 
-    @Query("SELECT b.cusip FROM Book b WHERE b.client_id = :client_id")
-    List<Book> findByCUSIP(@Param("client_id") int client_id);
+//    @Query("SELECT b.cusip FROM Book b WHERE b.client_id = :client_id")
+//    List<Book> findByCUSIP(@Param("client_id") int client_id);
 }

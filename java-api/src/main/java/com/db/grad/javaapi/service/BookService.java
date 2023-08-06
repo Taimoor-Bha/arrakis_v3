@@ -10,15 +10,14 @@ public interface BookService {
 
     List<Book> getAllActiveBooks();
 
-
     List<Book> findBooksMaturingBetweenLastAndNextDays(String givenDate);
 
     Optional<Book> findByIsin(String isin);
 
     Map<String, String> getBookIsinIssuerMap();
 
-    List<Book> getByISIN(int clientId);
-
-    List<Book> getByCUSIP(int clientId);
+//    List<String> getByISIN(int clientId);
+//
+//    List<String> getByCUSIP(int clientId);
 
 }
