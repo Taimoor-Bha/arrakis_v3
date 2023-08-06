@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,78 +29,47 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAll();
     }
 
-    @Override
-    public List<Book> findBooksDueForMaturityInLastAndNextFiveDays() {
-        java.util.Date date = new java.util.Date();
-        Date currentDate = new Date(date.getTime());
-        // for testing purpose
-//        String dateString = "2021-08-05";
-//        Date currentDate = Date.valueOf(dateString);
-
-        Date lastFiveDays = new Date(currentDate.getTime() - 5 * 24 * 60 * 60 * 1000); // 5 days ago
-        Date nextFiveDays = new Date(currentDate.getTime() + 5 * 24 * 60 * 60 * 1000); // 5 days from now
-        return bookRepository.findByBookMaturityDateBetween(lastFiveDays, nextFiveDays);
-    }
-
 
     @Override
-    public List<Book> findBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(String givenDate) {
-        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date currentDate = new Date(System.currentTimeMillis());
+    public List<Book> findBooksMaturingBetweenLastAndNextDays(String givenDate) {
+        DateTimeFormatter inputDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate currentDate = LocalDate.now();
 
         try {
-            java.util.Date utilDate = inputDateFormat.parse(givenDate);
-            currentDate = new Date(utilDate.getTime());
-        } catch (ParseException e) {
+            LocalDate utilDate = LocalDate.parse(givenDate, inputDateFormat);
+            currentDate = utilDate;
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
         List<Book> books = new ArrayList<>();
 
         // Find previous five working days
-        for (int i = 0; i < 5; i++) {
-            do {
-                calendar.add(Calendar.DAY_OF_WEEK, -1);
-            } while (!isWorkingDay(calendar)); // Skip weekends
+        LocalDate lastFiveDays = currentDate;
+        int daysToSubtract = 0;
+        while (daysToSubtract < 5) {
+            lastFiveDays = lastFiveDays.minusDays(1);
+            if (isWorkingDay(lastFiveDays)) {
+                daysToSubtract++;
+            }
         }
-        Date lastFiveDays = new Date(calendar.getTimeInMillis());
-
-        calendar.setTime(currentDate);
 
         // Find next five working days
-        for (int i = 0; i < 5; i++) {
-            do {
-                calendar.add(Calendar.DAY_OF_WEEK, 1);
-            } while (!isWorkingDay(calendar)); // Skip weekends
+        LocalDate nextFiveDays = currentDate;
+        int daysToAdd = 0;
+        while (daysToAdd < 5) {
+            nextFiveDays = nextFiveDays.plusDays(1);
+            if (isWorkingDay(nextFiveDays)) {
+                daysToAdd++;
+            }
         }
-        Date nextFiveDays = new Date(calendar.getTimeInMillis());
 
-        return bookRepository.findByBookMaturityDateBetween(lastFiveDays, nextFiveDays);
+        return bookRepository.findBySpecifiedDates(java.sql.Date.valueOf(lastFiveDays), java.sql.Date.valueOf(nextFiveDays));
     }
 
-    private boolean isWorkingDay(Calendar calendar) {
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        return dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY;
-    }
-
-
-    @Override
-    public List<Book> findBooksDueForMaturityInLastAndNextFiveDaysByDate(String givenDate) {
-        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat outputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date utilDate = null;
-        try {
-            utilDate = inputDateFormat.parse(givenDate);
-            Date currentDate = new Date(utilDate.getTime());
-            Date lastFiveDays = new Date(currentDate.getTime() - 5 * 24 * 60 * 60 * 1000); // 5 days ago
-            Date nextFiveDays = new Date(currentDate.getTime() + 5 * 24 * 60 * 60 * 1000); // 5 days from now
-            return bookRepository.findByBookMaturityDateBetween(lastFiveDays, nextFiveDays);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
+    // Helper method to check if a given date is a working day (excluding weekends)
+    private boolean isWorkingDay(LocalDate date) {
+        return date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY;
     }
 
 

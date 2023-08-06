@@ -37,29 +37,11 @@ public class BookController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book with ISIN " + isin + " not found");
     }
 
-    @GetMapping("/maturity")
-    public ResponseEntity<List<Book>> getBooksDueForMaturityInLastAndNextFiveDays() {
-        List<Book> books = bookServiceImpl.findBooksDueForMaturityInLastAndNextFiveDays();
-        if (books.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(books);
-        }
-    }
+
 
     @PostMapping("/maturity/date")
-    public ResponseEntity<List<Book>> getBooksDueForMaturityInLastAndNextFiveDaysByDate(@RequestParam String dateStr) {
-        List<Book> books = bookServiceImpl.findBooksDueForMaturityInLastAndNextFiveDaysByDate(dateStr);
-        if (books.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(books);
-        }
-    }
-
-    @PostMapping("/maturity/workday/date")
     public ResponseEntity<List<Book>> getBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(@RequestParam String dateStr) {
-        List<Book> books = bookServiceImpl.findBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(dateStr);
+        List<Book> books = bookServiceImpl.findBooksMaturingBetweenLastAndNextDays(dateStr);
         if (books.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {

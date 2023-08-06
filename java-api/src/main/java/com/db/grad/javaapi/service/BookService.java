@@ -10,11 +10,8 @@ public interface BookService {
 
     List<Book> getAllActiveBooks();
 
-    List<Book> findBooksDueForMaturityInLastAndNextFiveDays();
 
-    List<Book> findBooksDueForMaturityInLastAndNextFiveDaysByDate(String givenDate);
-
-    List<Book> findBooksDueForMaturityInLastAndNextFiveWorkDaysByDate(String givenDate);
+    List<Book> findBooksMaturingBetweenLastAndNextDays(String givenDate);
 
     Optional<Book> findByIsin(String isin);
 

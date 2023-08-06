@@ -44,7 +44,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<Book> getBooksByClientId(int clientId) {
-        return bookRepository.findByClient_ClientId(clientId);
+        return bookRepository.findBooksByClientId(clientId);
     }
 
     @Override
