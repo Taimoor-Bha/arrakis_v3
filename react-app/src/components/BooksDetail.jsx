@@ -1,5 +1,6 @@
 
 import '../BooksDetail.css'; // Import your custom CSS for styling
+import Card from 'react-bootstrap/esm/Card';
 
 const BooksDetail = (props) => {
   // Assuming props.info.bondMaturityDate contains the date string "2021-08-04T23:00:00.000+00:00"
@@ -8,49 +9,25 @@ const BooksDetail = (props) => {
 
   return (
     <div>
-      <table className="book-table">
-        <tbody>
-          <tr>
-            <td><strong>ISIN:</strong></td>
-            <td>{props.info.isin}</td>
-          </tr>
-          <tr>
-            <td><strong>Issuer Name:</strong></td>
-            <td>{props.info.issuerName}</td>
-          </tr>
-          <tr>
-            <td><strong>Book Currency:</strong></td>
-            <td>{props.info.bookCurrency}</td>
-          </tr>
-          <tr>
-            <td><strong>CUSIP:</strong></td>
-            <td>{props.info.cusip}</td>
-          </tr>
-          <tr>
-            <td><strong>Book Maturity Date:</strong></td>
-            <td>{formattedDate}</td>
-          </tr>
-          <tr>
-            <td><strong>Status:</strong></td>
-            <td>{props.info.status}</td>
-          </tr>
-          <tr>
-            <td><strong>Type:</strong></td>
-            <td>{props.info.type}</td>
-          </tr>
-          <tr>
-            <td><strong>Face Value:</strong></td>
-            <td>{props.info.faceValue}</td>
-          </tr>
-          <tr>
-            <td><strong>Client Id:</strong></td>
-            <td>{props.info.clientId}</td>
-          </tr>
-        </tbody>
-      </table>
+      <Card className="book-card">
+        <Card.Body>
+          <Card.Title><strong>ISIN:</strong> {props.info.isin}</Card.Title>
+          <Card.Text>
+            <strong>Issuer Name:</strong> {props.info.issuerName}<br />
+            <strong>Bond Currency:</strong> {props.info.bookCurrency} <br />
+            <strong>CUSIP:</strong> {props.info.cusip}<br />
+            <strong>Bond Maturity Date:</strong> {formattedDate}<br />
+            <strong>Status:</strong> {props.info.status}<br />
+            <strong>Type:</strong> {props.info.type}<br />
+            <strong>Face Value:</strong> {props.info.faceValue}<br />
+            <strong>Client Id:</strong> {props.info.clientId}<br />
+          </Card.Text>
+        </Card.Body>
+      </Card>
+
     </div>
   );
-
+  
 };
 
 export default BooksDetail;
