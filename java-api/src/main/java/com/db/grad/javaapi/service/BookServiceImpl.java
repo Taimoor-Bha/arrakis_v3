@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findBooksMaturingBetweenLastAndNextDays(String givenDate) {
-        DateTimeFormatter inputDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter inputDateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate currentDate = LocalDate.now();
 
         try {

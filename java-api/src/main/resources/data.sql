@@ -1,33 +1,32 @@
 
 INSERT INTO client (client_id, client_name, client_surname, client_email, client_password_hash)
 VALUES
-       (1000, 'Neal', 'Patel', 'neal@db.com', NULL),
-       (1001, 'Taimoor', 'Bhatti', 'taimoor@db.com', NULL),
-       (1002, 'Rares', 'Bran', 'rares@db.com',  NULL),
-       (1003, 'Test', '1', 't1@db.com',  NULL),
-       (1004, 'Test', '2', 't2@db.com', NULL);
+       (1000, 'Neal', 'Patel', 'neal@db.com', 'nealpatel'),
+       (1001, 'Taimoor', 'Bhatti', 'taimoor@db.com', 'taimoorbhatti'),
+       (1002, 'Rares', 'Bran', 'rares@db.com',  'raresbran');
+
 
 INSERT INTO book (isin, book_currency, cusip, face_value, issuer_name, book_maturity_date, status, type, client_id)
 VALUES
         ('XS1988387210', 'USD', NULL, 1000, 'BNPParibasIssu 4,37% Microsoft Corp (USD)', '2021-08-05', 'active', 'CORP', 1000),
         ('USN0280EAR64', 'USD', '123456780', 900, 'Airbus 3.15% USD', '2021-07-30', 'active', 'CORP', 1000),
-        ('A12356111', 'USD', '123456bh0', 900, 'UBS Facebook (USD)', '2021-09-30', 'active', 'CORP', 1000),
-        ('USU02320AG12', 'USD', NULL, 900, 'Amazon', '2021-08-03', 'active', 'CORP', 1000),
+        ('A12356111', 'USD', '123456bh0', 900, 'UBS Facebook (USD)', '2021-09-30', 'active', 'CORP', 1001),
+        ('USU02320AG12', 'USD', NULL, 900, 'Amazon', '2021-08-03', 'active', 'CORP', 1001),
         ('GB00B6460505', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1000),
         ('GB00B6460506', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1000),
-        ('GB00B6460507', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1000),
-        ('GB00B6460508', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1000),
+        ('GB00B6460507', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
+        ('GB00B6460508', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
         ('GB00B6460509', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
-        ('GB00B6460510', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
+        ('GB00B6460510', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1001),
         ('GB00B6460511', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
-        ('GB00B6460512', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
-        ('GB00B6460513', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
-        ('GB00B6460514', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1004),
-        ('GB00B6460515', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1004),
-        ('US87973RAA86', 'USD', '87973RAA8', 690, 'TEMASEK FINL I LTD GLOBAL MEDIUM TERM NTS BOOK ENTRY REG S', '2021-08-06', 'active', 'SOVN', 1004),
-        ('IE00B29LNP31', 'USD', '87973RAA8', 340, 'First Norway Alpha Kl.IV', '2030-12-22', 'active', 'SOVN', 1004),
-        ('CE00B29LNP67', 'USD', '98973RAA7', 360, 'ABC Airways', '2030-11-12', 'active', 'CORP', 1004),
-        ('M12356111653', 'GBP', '333456bh0', 700, 'UBS Mews', '2021-08-30', 'active', 'CORP', 1004);
+        ('GB00B6460512', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1001),
+        ('GB00B6460513', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1000),
+        ('GB00B6460514', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
+        ('GB00B6460515', 'GBP', 'BDCHBW8', 900, 'HM Treasury United Kingdom', '2021-08-09', 'active', 'GOVN', 1002),
+        ('US87973RAA86', 'USD', '87973RAA8', 690, 'TEMASEK FINL I LTD GLOBAL MEDIUM TERM NTS BOOK ENTRY REG S', '2021-08-06', 'active', 'SOVN', 1002),
+        ('IE00B29LNP31', 'USD', '87973RAA8', 340, 'First Norway Alpha Kl.IV', '2030-12-22', 'active', 'SOVN', 1001),
+        ('CE00B29LNP67', 'USD', '98973RAA7', 360, 'ABC Airways', '2030-11-12', 'active', 'CORP', 1002),
+        ('M12356111653', 'GBP', '333456bh0', 700, 'UBS Mews', '2021-08-30', 'active', 'CORP', 1000);
 
 
 INSERT INTO trade (trade_id, isin, trade_type, trade_currency, quantity, trade_settlement_date, trade_status, trade_date, unit_price, coupon_percent, book_name, book_holder)

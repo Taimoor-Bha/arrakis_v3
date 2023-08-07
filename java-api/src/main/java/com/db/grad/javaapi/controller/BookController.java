@@ -60,13 +60,5 @@ public class BookController {
         }
     }
 
-//    @GetMapping("/isin/{client_id}")
-//    public List<String> getBookByISIN(@PathVariable int clientId) {
-//        return bookServiceImpl.getByISIN(clientId);
-//    }
-//
-//    @GetMapping("/cusip/{client_id}")
-//    public List<String> getBookByCUSIP(@PathVariable int clientId) {
-//        return bookServiceImpl.getByCUSIP(clientId);
-//    }
+
 }
