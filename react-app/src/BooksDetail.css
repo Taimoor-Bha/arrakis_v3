@@ -1,0 +1,13 @@
+.book-card {
+  background-color: rgba(172, 98, 33, 0.949);
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  text-align: center;
+  height: 320px;
+}
+
+
+
+
+
